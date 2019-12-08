@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
 import { CrimeFightersFactory } from './crime-fighters-factory-lab.service';
 import { CrimeFighter } from './CrimeFighter';
+import { CrimeFighterQueryStorage } from './CrimeFighterQueryStorage';
 import { Hero } from './Hero';
-import { InMemoryDbService } from './InMemoryDbService';
 
-@Injectable({
-	providedIn: 'root',
-})
-export class InMemoryDataService implements InMemoryDbService {
+@Injectable()
+export class InMemoryCrimeFightersStorage implements CrimeFighterQueryStorage {
 
 	private static INITIAL_DATA = [
 		{ id: 11, name: 'Dr Nice' },
@@ -29,7 +27,7 @@ export class InMemoryDataService implements InMemoryDbService {
 	}
 
 	createDb(): void {
-		this.crimeFighters = InMemoryDataService.INITIAL_DATA
+		this.crimeFighters = InMemoryCrimeFightersStorage.INITIAL_DATA
 			.map(value => this.factory.createHeroWithId(value.id, value.name));
 	}
 

@@ -1,21 +1,21 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { CrimeFighter } from './CrimeFighter';
+import { CrimeFighterQueryStorage } from './CrimeFighterQueryStorage';
 
 import { Hero } from './Hero';
-import { InMemoryDataService } from './in-memory-data.service';
 import { ObservableHeroesAdapter } from './ObservableHeroesAdapter';
 
 @Injectable({ providedIn: 'root' })
 export class HeroService {
 
-	constructor(private inMemoryDataService: InMemoryDataService,
+	constructor(@Inject('CrimeFighterQueryStorage') private crimeFighterQueryStorage: CrimeFighterQueryStorage,
 				private adapter: ObservableHeroesAdapter) {
 	}
 
 	/** GET heroes from the server */
 	getHeroes(): Observable<Hero[]> {
-		const crimeFighters: CrimeFighter[] = this.inMemoryDataService.getCrimeFighters();
+		const crimeFighters: CrimeFighter[] = this.crimeFighterQueryStorage.getCrimeFighters();
 		return this.adapter.convertHeroes(crimeFighters);
 	}
 
