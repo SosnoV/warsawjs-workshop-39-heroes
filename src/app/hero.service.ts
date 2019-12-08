@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { CrimeFighter } from './CrimeFighter';
 
 import { Hero } from './Hero';
 import { InMemoryDataService } from './in-memory-data.service';
@@ -14,8 +15,8 @@ export class HeroService {
 
 	/** GET heroes from the server */
 	getHeroes(): Observable<Hero[]> {
-		const heroes: Hero[] = this.inMemoryDataService.getHeroes();
-		return this.adapter.convertHeroes(heroes);
+		const crimeFighters: CrimeFighter[] = this.inMemoryDataService.getCrimeFighters();
+		return this.adapter.convertHeroes(crimeFighters);
 	}
 
 	getHero(id: number): Observable<Hero> {

@@ -26,7 +26,6 @@ export class InMemoryDataService implements InMemoryDbService {
 
 	constructor(private factory: CrimeFightersFactory) {
 		this.createDb();
-		//4-5 metod
 	}
 
 	createDb(): void {
@@ -39,7 +38,7 @@ export class InMemoryDataService implements InMemoryDbService {
 		return 0;
 	}
 
-	getHeroes(): CrimeFighter[] {
+	getCrimeFighters(): CrimeFighter[] {
 		return this.crimeFighters;
 	}
 }

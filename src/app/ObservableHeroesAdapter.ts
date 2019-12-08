@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { CrimeFighter } from './CrimeFighter';
 import { Hero } from './Hero';
 
 @Injectable({
@@ -7,7 +8,17 @@ import { Hero } from './Hero';
 })
 export class ObservableHeroesAdapter {
 
-	convertHeroes(heroes: Hero[]): Observable<Hero[]> {
+	convertHeroes(crimeFighters: CrimeFighter[]): Observable<Hero[]> {
+		if (crimeFighters == null) {
+			// do something
+		}
+		let heroes: Hero[] = [];
+		for (let crimeFighter of crimeFighters) {
+			if (crimeFighter instanceof Hero) {
+				heroes.push(crimeFighter as Hero);
+			}
+		}
+
 		return of(heroes);
 	}
 }
