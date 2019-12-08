@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
-import { Hero } from './hero';
+import { Hero } from './Hero';
 import { InMemoryDbService } from './InMemoryDbService';
 
 @Injectable({
 	providedIn: 'root',
 })
 export class InMemoryDataService implements InMemoryDbService {
-	createDb() {
-		const heroes = [
+
+	private heroes: Hero[];
+
+	constructor() {
+		this.createDb();
+		//4-5 metod
+	}
+
+	createDb(): void {
+		this.heroes = [
 			{ id: 11, name: 'Dr Nice' },
 			{ id: 12, name: 'Narco' },
 			{ id: 13, name: 'Bombasto' },
@@ -19,10 +27,13 @@ export class InMemoryDataService implements InMemoryDbService {
 			{ id: 19, name: 'Magma' },
 			{ id: 20, name: 'Tornado' }
 		];
-		return { heroes };
 	}
 
 	genId(heroes: Hero[]): number {
 		return heroes.length > 0 ? Math.max(...heroes.map(hero => hero.id)) + 1 : 11;
+	}
+
+	getHeroes() {
+		return this.heroes;
 	}
 }
