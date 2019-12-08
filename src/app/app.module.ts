@@ -9,8 +9,6 @@ import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { HeroesComponent } from './heroes/heroes.component';
 
-// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-
 @NgModule({
 	imports: [
 		BrowserModule,
