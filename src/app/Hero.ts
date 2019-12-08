@@ -11,4 +11,8 @@ export class Hero extends CrimeFighter {
 		this.id = id;
 		this.name = name;
 	}
+
+	fightCrime(): void {
+		console.log('Pow pow pow');
+	}
 }

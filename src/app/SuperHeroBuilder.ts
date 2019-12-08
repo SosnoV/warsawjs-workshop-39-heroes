@@ -1,8 +1,9 @@
 import { Superhero } from './Superhero';
+import { Superpower } from './Superpower';
 
 export class SuperHeroBuilder {
 
-	private heroSuperpower: string;
+	private heroSuperpower: Superpower;
 
 	constructor(private heroId: number, private heroName: string) {
 
@@ -12,7 +13,7 @@ export class SuperHeroBuilder {
 		return new SuperHeroBuilder(heroId, heroName);
 	}
 
-	withSuperpower(heroSuperpower: string): SuperHeroBuilder {
+	withSuperpower(heroSuperpower: Superpower): SuperHeroBuilder {
 		this.heroSuperpower = heroSuperpower;
 		return this;
 	}
